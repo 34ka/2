@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -37,20 +36,35 @@ public class StudentRegistrationFormWithPageObjectsTests {
     @Test
     public void successFillTest() {
         //Открыть страницу в браузере и проверить название формы
-        registrationPage.openPage().checkStudentRegistrationForm();
+        registrationPage.openPage().checkHeaderTitleStudentRegistrationForm();
 
         //Заполнить поля формы
         registrationPage
-                .setFirstName(firstName).setLastName(lastName).setEmail(email)
-                .setGender(gender).setMobileNumber(mobileNumber).setBirthDate(day, month, year)
-                .setSubjects(subject).setHobbies(hobbies).uploadFile(file).setCurrentAddress(currentAddress)
-                .setSelectState(state).setSelectCity(city);
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setGender(gender)
+                .setMobileNumber(mobileNumber)
+                .setBirthDate(day, month, year)
+                .setSubjects(subject)
+                .setHobbies(hobbies)
+                .uploadFile(file)
+                .setCurrentAddress(currentAddress)
+                .setSelectState(state)
+                .setSelectCity(city);
 
         //Проверить название формы и введённые данные
-        registrationPage.checkThanksForSubmittingTheForm().checkForm("Student Name", firstName + " " + lastName)
-                .checkForm("Student Email", email).checkForm("Gender", gender).checkForm("Mobile", mobileNumber)
-                .checkForm("Date of Birth", day + " " + month + "," + year).checkForm("Subjects", subject)
-                .checkForm("Hobbies", hobbies).checkForm("Picture", file).checkForm("Address", currentAddress)
+        registrationPage
+                .checkHeaderTitleThanksForSubmittingTheForm()
+                .checkForm("Student Name", firstName + " " + lastName)
+                .checkForm("Student Email", email)
+                .checkForm("Gender", gender)
+                .checkForm("Mobile", mobileNumber)
+                .checkForm("Date of Birth", day + " " + month + "," + year)
+                .checkForm("Subjects", subject)
+                .checkForm("Hobbies", hobbies)
+                .checkForm("Picture", file)
+                .checkForm("Address", currentAddress)
                 .checkForm("State and City", state + " " + city);
     }
 }

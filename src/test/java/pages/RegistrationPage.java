@@ -124,12 +124,12 @@ public class RegistrationPage {
 
 
     //метод проверки названия формы "Student Registration Form"
-    public RegistrationPage checkStudentRegistrationForm() {
+    public RegistrationPage checkHeaderTitleStudentRegistrationForm() {
         studentRegistrationForm.shouldHave(text("Student Registration Form"));
         return this;
     }
     //метод проверки названия формы "Thanks for submitting the form"
-    public RegistrationPage checkThanksForSubmittingTheForm() {
+    public RegistrationPage checkHeaderTitleThanksForSubmittingTheForm() {
         thanksForSubmittingTheForm.shouldHave(text("Thanks for submitting the form"));
         return this;
     }
