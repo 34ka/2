@@ -1,4 +1,4 @@
-﻿package qa.guru.allure;
+package qa.guru.allure;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
