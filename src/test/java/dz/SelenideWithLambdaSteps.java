@@ -1,7 +1,5 @@
 package dz;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 
@@ -13,12 +11,10 @@ import static io.qameta.allure.Allure.step;
 
 public class SelenideWithLambdaSteps {
 
-    private static final String REPOSITORY = "34ka/2";
+    public final String REPOSITORY = "34ka/2";
 
     @Test
     public void testLambdaSteps() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
         step("Открываем главную страницу", () -> {
             open("https://github.com");
         });
@@ -31,7 +27,7 @@ public class SelenideWithLambdaSteps {
         step("Переходим в таб Issue", () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем что текст", () -> {
+        step("Проверяем текст", () -> {
             $("h3").shouldHave(text("Welcome to issues!"));
         });
     }
