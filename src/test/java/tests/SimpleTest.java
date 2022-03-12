@@ -1,5 +1,6 @@
 package tests;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,5 +20,6 @@ public class SimpleTest {
     @Test
     public void assertFailAnotherTest() {
         fail("another fail!");
+        System.out.println(3);
     }
 }
