@@ -19,6 +19,6 @@ public class SimpleTest {
     @Test
     public void assertFailAnotherTest() {
         fail("another fail!");
-        System.out.println(1);
+        System.out.println(2);
     }
 }
