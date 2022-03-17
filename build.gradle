@@ -6,15 +6,26 @@ repositories {
     mavenCentral()
 }
 
+def allureVersion = "2.17.2",
+    junitVersion = "5.8.2"
+
 dependencies {
     testImplementation(
             "com.codeborne:selenide:6.2.1",
-            "org.junit.jupiter:junit-jupiter:5.8.2")
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly(
-            "org.junit.jupiter:junit-jupiter-engine:5.8.2",
+            "org.junit.jupiter:junit-jupiter-engine:$junitVersion",
             "org.slf4j:slf4j-simple:1.7.32")
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+//            events "started", "failed"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
