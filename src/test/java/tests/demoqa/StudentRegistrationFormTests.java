@@ -1,7 +1,8 @@
-package tests;
+package tests.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -18,6 +19,7 @@ public class StudentRegistrationFormTests {
         Configuration.baseUrl = "https://demoqa.com";
     }
 
+    @Disabled
     @Test
     void successfulFillFormTest() {
         String firstName = "Noob",
