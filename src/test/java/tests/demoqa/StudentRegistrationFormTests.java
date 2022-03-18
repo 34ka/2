@@ -19,7 +19,6 @@ public class StudentRegistrationFormTests {
         Configuration.baseUrl = "https://demoqa.com";
     }
 
-    @Disabled
     @Test
     void successfulFillFormTest() {
         String firstName = "Noob",
