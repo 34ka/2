@@ -1,8 +1,7 @@
 package tests.demoqa;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class StudentRegistrationFormTests extends TestBase {
 
+    @Disabled
     @Test
     public void successfulFillFormTest() {
         String firstName = "Noob",
