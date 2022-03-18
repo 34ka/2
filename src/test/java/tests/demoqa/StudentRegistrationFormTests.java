@@ -27,8 +27,8 @@ public class StudentRegistrationFormTests extends TestBase {
                 hobbie2 = "Music",
                 picture = "1.jpg",
                 currentAddress = "Lenina, 57, 101",
-                state = "Uttar Pradesh",
-                city = "Agra";
+                state = "NCR",
+                city = "Delhi";
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
