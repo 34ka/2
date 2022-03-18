@@ -1,8 +1,5 @@
 package tests.demoqa;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -11,16 +8,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class StudentRegistrationFormTests {
-
-    @BeforeAll
-    static void setup() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+public class StudentRegistrationFormTests extends TestBase {
 
     @Test
-    void successfulFillFormTest() {
+    public void successfulFillFormTest() {
         String firstName = "Noob",
                 lastName = "Noobasov",
                 email = "Noob@ththerth.rgw",
@@ -36,8 +27,8 @@ public class StudentRegistrationFormTests {
                 hobbie2 = "Music",
                 picture = "1.jpg",
                 currentAddress = "Lenina, 57, 101",
-                state = "Rajasthan",
-                city = "Jaiselmer";
+                state = "Uttar Pradesh",
+                city = "Agra";
 
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -60,7 +51,7 @@ public class StudentRegistrationFormTests {
         $("#hobbiesWrapper").$(byText(hobbie1)).click();
         $("#hobbiesWrapper").$(byText(hobbie2)).click();
         //Загрузить картинку
-        $("#uploadPicture").uploadFile(new File("src/test/resources/" + picture));
+        //$("#uploadPicture").uploadFile(new File("src/test/resources/" + picture));
 
         $("#currentAddress").val(currentAddress);
         //set state and city
@@ -69,7 +60,7 @@ public class StudentRegistrationFormTests {
         $(byText("Select City")).click();
         $(byText(city)).click();
 
-        $("#submit").click();
+        $("#submit").pressEnter();
 
         //Проверить содержимое с заполненным
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
@@ -83,7 +74,7 @@ public class StudentRegistrationFormTests {
         $x("//td[text()='Date of Birth']").parent().shouldHave(text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth));
         $x("//td[text()='Subjects']").parent().shouldHave(text(subject1 + ", " + subject2 + ", " + subject3));
         $x("//td[text()='Hobbies']").parent().shouldHave(text(hobbie1 + ", " + hobbie2));
-        $x("//td[text()='Picture']").parent().shouldHave(text(picture));
+        //$x("//td[text()='Picture']").parent().shouldHave(text(picture));
         $x("//td[text()='Address']").parent().shouldHave(text(currentAddress));
         $x("//td[text()='State and City']").parent().shouldHave(text(state + " " + city));
     }
