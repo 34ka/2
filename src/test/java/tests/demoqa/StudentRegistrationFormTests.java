@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class StudentRegistrationFormTests extends TestBase {
 
-    @Disabled
     @Test
     public void successfulFillFormTest() {
         String firstName = "Noob",
