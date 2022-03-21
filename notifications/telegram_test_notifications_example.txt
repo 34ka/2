@@ -11,3 +11,10 @@ java \
 java "-DprojectName=Local test run" "-Denv=PROD" "-DreportLink=qa.guru/" "-Dcomm=Any comment here" "-Dconfig.file=notifications/telegram_config.json" -jar notifications/allure-notifications-3.1.2.jar
 
 // Jenkins
+java \
+"-DprojectName=${PROJECT_NAME}" \
+"-Denv=${ENVIRONMENT}" \
+"-DreportLink=${BUILD_URL}" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=notifications/telegram_config.json" \
+-jar notifications/allure-notifications-3.1.2.jar
