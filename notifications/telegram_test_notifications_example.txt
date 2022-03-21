@@ -12,7 +12,7 @@ java "-DprojectName=Local test run" "-Denv=PROD" "-DreportLink=qa.guru/" "-Dcomm
 
 // Jenkins
 java \
-"-DprojectName=${PROJECT_NAME}" \
+"-DprojectName=${JOB_NAME}" \
 "-Denv=${ENVIRONMENT}" \
 "-DreportLink=${BUILD_URL}" \
 "-Dcomm=Any comment here" \
