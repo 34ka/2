@@ -1,0 +1,13 @@
+// Template
+java \
+"-DprojectName=${PROJECT_NAME}" \
+"-Denv=${ENVIRONMENT}" \
+"-DreportLink=${BUILD_URL}" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=${PATH_TO_FILE}" \
+-jar allure-notifications-3.1.2.jar
+
+// Local in one line
+java "-DprojectName=Local test run" "-Denv=PROD" "-DreportLink=qa.guru/" "-Dcomm=Any comment here" "-Dconfig.file=notifications/telegram_config.json" -jar notifications/allure-notifications-3.1.2.jar
+
+// Jenkins
