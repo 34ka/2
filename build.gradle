@@ -6,17 +6,29 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 compileTestJava {
     options.encoding = 'UTF-8'
 }
 
 dependencies {
-    testImplementation(
-            "com.codeborne:selenide:6.3.2",
-            "org.junit.jupiter:junit-jupiter:5.8.2")
-    testRuntimeOnly(
-            "org.junit.jupiter:junit-jupiter-engine:5.8.2",
-            "org.slf4j:slf4j-simple:1.7.32")
+    // Selenide
+    testImplementation("com.codeborne:selenide:6.3.2")
+    testRuntimeOnly("org.slf4j:slf4j-simple:1.7.32")
+
+    // pdf
+    testImplementation('com.codeborne:pdf-test:1.7.0')
+
+
+    // JUnit 5
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
 }
 
 test {
