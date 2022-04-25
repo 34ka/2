@@ -31,6 +31,7 @@ allure {
 
 dependencies {
     testImplementation(
+            "org.aeonbits.owner:owner:1.0.12",
             "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
             "io.appium:java-client:$appiumVersion",
