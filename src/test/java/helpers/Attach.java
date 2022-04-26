@@ -32,7 +32,7 @@ public class Attach {
                 + "' type='video/mp4'></video></body></html>";
     }
 
-    public static String getSessionId() {
+    public static String sessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 }
