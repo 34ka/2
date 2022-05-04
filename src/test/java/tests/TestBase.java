@@ -1,7 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import config.Data;
 import drivers.BrowserstackMobileDriver;
+import drivers.RealMobileDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -20,8 +22,17 @@ public class TestBase {
     @BeforeAll
     public static void setup() {
         addListener("AllureSelenide", new AllureSelenide());
-
-        Configuration.browser = BrowserstackMobileDriver.class.getName();
+        switch (System.getProperty("device")) {
+            case "real":
+            case "emulator":
+                Configuration.browser = RealMobileDriver.class.getName();
+                break;
+            case "browserstack":
+                Configuration.browser = BrowserstackMobileDriver.class.getName();
+                break;
+            default:
+                throw new IllegalArgumentException("Такого устройства нет");
+        }
         Configuration.browserSize = null;
     }
 
@@ -32,12 +43,18 @@ public class TestBase {
 
     @AfterEach
     public void afterEach() {
-        String sessionId = sessionId();
+        String sessionId = "";
+        if(Data.isBrowserStack()) {
+            sessionId = sessionId();
+        }
 
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
 
         step("Close driver", Selenide::closeWebDriver);
-        Attach.video(sessionId);
+
+        if (Data.isBrowserStack()) {
+            Attach.video(sessionId);
+        }
     }
 }
